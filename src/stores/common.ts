@@ -23,6 +23,7 @@ type AuthStore = {
   getUsers: (page: number) => User[]
   addUser: (user: User) => void
   getUser: (id: string | number) => User | undefined
+  updateUser: (user: User) => void
 }
 
 export const useCommonStore = create<AuthStore>()((set, get) => ({
@@ -32,4 +33,13 @@ export const useCommonStore = create<AuthStore>()((set, get) => ({
   addUser: (user) =>
     set((state) => ({ ...state, users: [user, ...state.users] })),
   getUser: (id) => get().users.find((obj) => obj.id === id),
+  updateUser: (user) =>
+    set((state) => ({
+      ...state,
+      users: state.users.map((u) => {
+        if (u.id === user.id) {
+          return user
+        } else return u
+      }),
+    })),
 }))

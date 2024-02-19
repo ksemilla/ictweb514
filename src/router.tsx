@@ -8,6 +8,8 @@ import { AuthLayout } from "./layouts/AuthLayout"
 import { BaseLayout } from "./layouts/BaseLayout"
 import { UserList } from "./pages/users/UserList"
 import { UserDetail } from "./pages/users/UserDetail"
+import { UserEdit } from "./pages/users/UserEdit"
+import { UserCreate } from "./pages/users/UserCreate"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,7 +19,9 @@ export const router = createBrowserRouter(
         <Route element={<BaseLayout />}>
           <Route path="/" element={<UserList />} />
           <Route path="/users" element={<UserList />} />
+          <Route path="/users/create" element={<UserCreate />} />
           <Route path="/users/:id" element={<UserDetail />} />
+          <Route path="/users/:id/edit" element={<UserEdit />} />
         </Route>
       </Route>
     </Route>
