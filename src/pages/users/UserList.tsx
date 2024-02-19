@@ -12,7 +12,9 @@ export function UserList() {
   useEffect(() => {
     setUsers(getUsers(page))
   }, [page])
+  console.log(users)
   const navigate = useNavigate()
+
   return (
     <div className="px-4 sm:px-6 lg:px-8 max-w-5xl m-auto mt-8">
       <div className="sm:flex sm:items-center">

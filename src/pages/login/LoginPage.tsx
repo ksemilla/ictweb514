@@ -9,20 +9,20 @@ export function LoginPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm<{ email: string; password: string }>()
 
   const onSubmit = handleSubmit((data) => {
     const user = authState.users.find((obj) => obj.email === data.email)
     authState.setIsLogged(true)
-    // if (!user) {
-    //   setError(`User with email ${data.email} doesn't exist`)
-    // } else if (user.password !== data.password) {
-    //   setError("Incorrect password")
-    // } else {
-    //   authState.setUser(user)
-    //   authState.setIsLogged(true)
-    // }
+    if (!user) {
+      setError(`User with email ${data.email} doesn't exist`)
+    } else if (user.password !== data.password) {
+      setError("Incorrect password")
+    } else {
+      authState.setUser(user)
+      authState.setIsLogged(true)
+    }
   })
 
   return authState.isLogged ? (
@@ -31,7 +31,7 @@ export function LoginPage() {
     <div>
       <p>{error}</p>
       <form onSubmit={onSubmit}>
-        {/* <input
+        <input
           type="email"
           {...register("email", { required: "Please enter your email" })}
         />
@@ -41,7 +41,7 @@ export function LoginPage() {
             required: "Please enter password",
             minLength: { value: 4, message: "Minimum of 4 characters" },
           })}
-        /> */}
+        />
         <button>Login</button>
       </form>
     </div>

@@ -6,11 +6,12 @@ import { v4 as uuidv4 } from "uuid"
 
 function App() {
   const [loading, setLoading] = useState(true)
-  const setUsers = useCommonStore((state) => state.setUsers)
+  const { users, setUsers } = useCommonStore()
   useEffect(() => {
     fetch("https://random-data-api.com/api/v2/users?size=100")
       .then((res) => res.json())
       .then((res) => {
+        console.log("fetching", users)
         setUsers(
           res.map((user: User) => ({
             ...user,
@@ -20,6 +21,7 @@ function App() {
         )
         setLoading(false)
       })
+    console.log("x", users)
   }, [])
 
   return loading ? <div>Loading...</div> : <RouterProvider router={router} />
