@@ -4,7 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/16/solid"
 import { classNames, createArray } from "../../utils"
 import { useNavigate } from "react-router-dom"
 
-export function Page1List() {
+export function UserList() {
   const [users, setUsers] = useState<User[]>([])
   const [page, setPage] = useState(1)
   const { getUsers, users: storeUsers } = useCommonStore()
@@ -14,7 +14,7 @@ export function Page1List() {
   }, [page])
   const navigate = useNavigate()
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
+    <div className="px-4 sm:px-6 lg:px-8 max-w-5xl m-auto mt-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">
@@ -66,7 +66,7 @@ export function Page1List() {
                     <tr
                       key={person.id}
                       className="cursor-pointer hover:bg-gray-100"
-                      onClick={() => navigate(`/app1/${person.id}`)}
+                      onClick={() => navigate(`/users/${person.id}`)}
                     >
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                         {person.name}

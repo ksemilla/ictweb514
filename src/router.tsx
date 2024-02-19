@@ -6,8 +6,8 @@ import {
 import { LoginPage } from "./pages/login/LoginPage"
 import { AuthLayout } from "./layouts/AuthLayout"
 import { BaseLayout } from "./layouts/BaseLayout"
-import { Page1List } from "./pages/page1/Page1List"
-import { Page1Detail } from "./pages/page1/Page1Detail"
+import { UserList } from "./pages/users/UserList"
+import { UserDetail } from "./pages/users/UserDetail"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -15,9 +15,9 @@ export const router = createBrowserRouter(
       <Route path="/login" element={<LoginPage />} />
       <Route element={<AuthLayout />}>
         <Route element={<BaseLayout />}>
-          <Route path="/" element={<Page1List />} />
-          <Route path="/app1" element={<Page1List />} />
-          <Route path="/app1/:id" element={<Page1Detail />} />
+          <Route path="/" element={<UserList />} />
+          <Route path="/users" element={<UserList />} />
+          <Route path="/users/:id" element={<UserDetail />} />
         </Route>
       </Route>
     </Route>

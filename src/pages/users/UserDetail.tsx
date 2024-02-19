@@ -2,18 +2,20 @@ import { useNavigate, useParams } from "react-router-dom"
 import { User, useCommonStore } from "../../stores/common"
 import { useEffect, useState } from "react"
 
-export function Page1Detail() {
+export function UserDetail() {
   const navigate = useNavigate()
   const [user, setUser] = useState<User>()
   const { getUser } = useCommonStore()
   const { id } = useParams()
 
   useEffect(() => {
-    setUser(getUser(id ?? ""))
+    if (id) {
+      setUser(getUser(id ?? ""))
+    }
   }, [id])
 
   return (
-    <div className="max-w-5xl m-auto">
+    <div className="max-w-5xl m-auto mt-8">
       <div className="px-4 sm:px-0 flex justify-between items-center">
         <div>
           <h3 className="text-base font-semibold leading-7 text-gray-900">
@@ -25,10 +27,10 @@ export function Page1Detail() {
         </div>
         <button
           type="button"
-          className="rounded bg-indigo-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           onClick={() => navigate("edit")}
         >
-          Button Edit
+          Edit
         </button>
       </div>
       <div className="mt-6 border-t border-gray-100">
