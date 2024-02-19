@@ -6,7 +6,7 @@ import {
 import { LoginPage } from "./pages/login/LoginPage"
 import { AuthLayout } from "./layouts/AuthLayout"
 import { BaseLayout } from "./layouts/BaseLayout"
-import { Page1 } from "./pages/page1/Page1"
+import { Page1List } from "./pages/page1/Page1List"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,7 +14,7 @@ export const router = createBrowserRouter(
       <Route path="/login" element={<LoginPage />} />
       <Route element={<AuthLayout />}>
         <Route element={<BaseLayout />}>
-          <Route path="/" element={<Page1 />} />
+          <Route path="/" element={<Page1List />} />
         </Route>
       </Route>
     </Route>

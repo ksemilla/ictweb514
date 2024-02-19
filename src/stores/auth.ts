@@ -27,6 +27,10 @@ export const useAuthStore = create<AuthStore>()((set) => ({
       email: "janedoe@test.com",
       password: "test",
     },
+    {
+      email: "test@test.com",
+      password: "test",
+    },
   ],
   setUser: (user) => set((state) => ({ ...state, user })),
 }))
