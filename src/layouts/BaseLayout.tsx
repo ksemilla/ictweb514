@@ -4,9 +4,9 @@ export function BaseLayout() {
   return (
     <>
       <nav className="text-center space-x-4 border-b">
-        <Link to="/page1">Page 1</Link>
-        <Link to="/page2">Page 2</Link>
-        <Link to="/page3">Page 3</Link>
+        <Link to="/app1">App 1</Link>
+        <Link to="/app2">App 2</Link>
+        <Link to="/app3">App 3</Link>
       </nav>
       <Outlet />
     </>
