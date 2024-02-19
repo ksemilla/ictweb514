@@ -82,7 +82,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               props.leftIcon ? "pl-10" : "",
               hasError
                 ? "ring-red-500 focus:ring-red-500 dark:red-ring-500"
-                : "ring-gray-300 focus:ring-indigo-600 dark:ring-gray-100"
+                : "ring-gray-300 focus:ring-indigo-600 dark:ring-gray-200"
             )}
             {...rest}
           />
