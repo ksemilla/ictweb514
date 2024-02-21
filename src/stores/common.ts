@@ -1,4 +1,5 @@
 import { create } from "zustand"
+import { items } from "../const"
 
 export type User = {
   id?: number | string
@@ -17,6 +18,18 @@ export type User = {
   phone_number: string
 }
 
+export type Item = {
+  id?: string
+  name: string
+  description?: string
+  price: number
+  imageUrl?: string
+}
+
+export interface OrderItem extends Item {
+  quantity: number
+}
+
 type AuthStore = {
   users: User[]
   setUsers: (users: User[]) => void
@@ -24,6 +37,11 @@ type AuthStore = {
   addUser: (user: User) => void
   getUser: (id: string | number) => User | undefined
   updateUser: (user: User) => void
+
+  items: Item[]
+  orderItems: OrderItem[]
+  addOrderItem: (orderItem: OrderItem) => void
+  removeOrderItem: (id: string) => void
 }
 
 export const useCommonStore = create<AuthStore>()((set, get) => ({
@@ -41,5 +59,18 @@ export const useCommonStore = create<AuthStore>()((set, get) => ({
           return user
         } else return u
       }),
+    })),
+
+  items: items,
+  orderItems: [],
+  addOrderItem: (orderitem) =>
+    set((state) => ({
+      ...state,
+      orderItems: [...state.orderItems, orderitem],
+    })),
+  removeOrderItem: (id) =>
+    set((state) => ({
+      ...state,
+      orderItems: state.orderItems.filter((obj) => obj.id !== id),
     })),
 }))

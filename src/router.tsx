@@ -10,6 +10,7 @@ import { UserList } from "./pages/users/UserList"
 import { UserDetail } from "./pages/users/UserDetail"
 import { UserEdit } from "./pages/users/UserEdit"
 import { UserCreate } from "./pages/users/UserCreate"
+import { ItemList } from "./pages/items/ItemList"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +23,7 @@ export const router = createBrowserRouter(
           <Route path="/users/create" element={<UserCreate />} />
           <Route path="/users/:id" element={<UserDetail />} />
           <Route path="/users/:id/edit" element={<UserEdit />} />
+          <Route path="/items" element={<ItemList />} />
         </Route>
       </Route>
     </Route>
