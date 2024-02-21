@@ -55,7 +55,8 @@ export function ItemList() {
         {items.map((item) => (
           <div
             key={item.id}
-            className="group cursor-pointer shadow rounded-lg overflow-hidden"
+            className="group cursor-pointer shadow rounded-lg overflow-hidden ring-1 ring-transparent hover:ring-2 hover:ring-blue-500"
+            onClick={() => navigate(`${item.id}/edit` ?? "")}
           >
             <div className="w-full h-72">
               <img

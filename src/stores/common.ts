@@ -23,7 +23,7 @@ export type Item = {
   name: string
   description?: string
   price: number
-  imageUrl?: string
+  imageUrl: string
 }
 
 export interface OrderItem extends Item {
@@ -42,6 +42,9 @@ type AuthStore = {
   orderItems: OrderItem[]
   addOrderItem: (orderItem: OrderItem) => void
   removeOrderItem: (id: string) => void
+  addItem: (item: Item) => void
+  getItem: (id: string) => Item | undefined
+  updateItem: (item: Item) => void
 }
 
 export const useCommonStore = create<AuthStore>()((set, get) => ({
@@ -72,5 +75,20 @@ export const useCommonStore = create<AuthStore>()((set, get) => ({
     set((state) => ({
       ...state,
       orderItems: state.orderItems.filter((obj) => obj.id !== id),
+    })),
+  addItem: (item) =>
+    set((state) => ({
+      ...state,
+      items: [...state.items, item],
+    })),
+  getItem: (id) => get().items.find((obj) => obj.id === id),
+  updateItem: (item) =>
+    set((state) => ({
+      ...state,
+      items: state.items.map((u) => {
+        if (u.id === item.id) {
+          return item
+        } else return u
+      }),
     })),
 }))
