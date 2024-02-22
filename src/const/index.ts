@@ -1,5 +1,6 @@
 import { Item } from "../stores/common"
 import { v4 as uuidv4 } from "uuid"
+import { Course, SchoolUser } from "../stores/school"
 
 export const items: Item[] = [
   {
@@ -90,5 +91,92 @@ export const items: Item[] = [
       "Coffee cocktail made with hot coffee, Irish whiskey, sugar, and topped with cream.",
     imageUrl:
       "https://source.unsplash.com/filled-clear-rock-glass-near-straw-TWAqkciDkA0",
+  },
+]
+
+export const schoolUsers: SchoolUser[] = [
+  {
+    id: uuidv4(),
+    email: "admin@admin.com",
+    password: "admin",
+    role: "admin",
+    name: "admin",
+  },
+  {
+    id: uuidv4(),
+    email: "teacher@teacher.com",
+    password: "teacher",
+    role: "teacher",
+    name: "teacher",
+    courses: [
+      {
+        id: "ictweb514",
+        name: "Create Dynamic Web Pages",
+        code: "ICTWEB514",
+        description: "Create web pages",
+        time: "Monday - Wednesdays 4:00pm",
+      },
+      {
+        id: "ictweb513",
+        name: "Build Dynamic Websites",
+        code: "ICTWEB513",
+        description: "Create web pages",
+        time: "Wednesdays 3:00pm",
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    email: "student@student.com",
+    password: "student",
+    role: "student",
+    name: "student",
+    courses: [
+      {
+        id: "ictweb514",
+        name: "Create Dynamic Web Pages",
+        code: "ICTWEB514",
+        description: "Create web pages",
+        time: "Monday - Wednesdays 4:00pm",
+      },
+      {
+        id: "ictweb513",
+        name: "Build Dynamic Websites",
+        code: "ICTWEB513",
+        description: "Create web pages",
+        time: "Wednesdays 3:00pm",
+      },
+    ],
+  },
+]
+
+export const schoolCourses: Course[] = [
+  {
+    id: "ictweb514",
+    name: "Create Dynamic Web Pages",
+    code: "ICTWEB514",
+    description: "Create web pages",
+    time: "Monday - Wednesdays 4:00pm",
+  },
+  {
+    id: "ictweb513",
+    name: "Build Dynamic Websites",
+    code: "ICTWEB513",
+    description: "Create web pages",
+    time: "Wednesdays 3:00pm",
+  },
+  {
+    id: "bsbpmg536",
+    name: "manage Project Risk",
+    code: "BSBPMG536",
+    description: "Create web pages",
+    time: "Tuesdays 2:00pm",
+  },
+  {
+    id: "bsbpmg532",
+    name: "Manage Project Quality",
+    code: "BSBPMG532",
+    description: "Create web pages",
+    time: "Mondays 1:00pm",
   },
 ]
