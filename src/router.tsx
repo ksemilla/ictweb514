@@ -16,6 +16,11 @@ import { LoginPage } from "./pages/school/LoginPage"
 import { StudentCreate } from "./pages/school/StudentCreate"
 import { SchoolAuthLayout } from "./layouts/SchoolAuthLayout"
 import { TeacherPage } from "./pages/school/TeacherPage"
+import { StudentPage } from "./pages/school/StudentPage"
+import { AdminPage } from "./pages/school/AdminPage"
+import { SchoolUserPage } from "./pages/school/SchoolUserPage"
+import { CourseCreate } from "./pages/school/CourseCreate"
+import { CoursePage } from "./pages/school/CourseEdit"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +40,11 @@ export const router = createBrowserRouter(
           <Route path="/school/signup" element={<StudentCreate />} />
           <Route element={<SchoolAuthLayout />}>
             <Route path="/school/my-teacher" element={<TeacherPage />} />
+            <Route path="/school/my-student" element={<StudentPage />} />
+            <Route path="/school/admin" element={<AdminPage />} />
+            <Route path="/school/user/:id" element={<SchoolUserPage />} />
+            <Route path="/school/course/create" element={<CourseCreate />} />
+            <Route path="/school/course/:id" element={<CoursePage />} />
           </Route>
         </Route>
       </Route>

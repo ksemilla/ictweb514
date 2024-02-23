@@ -107,7 +107,7 @@ export const schoolUsers: SchoolUser[] = [
     email: "teacher@teacher.com",
     password: "teacher",
     role: "teacher",
-    name: "teacher",
+    name: "John Doe",
     courses: [
       {
         id: "ictweb514",
@@ -130,7 +130,7 @@ export const schoolUsers: SchoolUser[] = [
     email: "student@student.com",
     password: "student",
     role: "student",
-    name: "student",
+    name: "Little Bobby",
     courses: [
       {
         id: "ictweb514",

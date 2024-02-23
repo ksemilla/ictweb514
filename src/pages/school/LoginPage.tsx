@@ -2,10 +2,10 @@ import { FormProvider, useForm } from "react-hook-form"
 import { TextInput } from "../../components/TextInput"
 import { Link, useNavigate } from "react-router-dom"
 import { useSchoolStore } from "../../stores/school"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export function LoginPage() {
-  const { users, setIsLogged, setUser } = useSchoolStore()
+  const { users, setIsLogged, setUser, isLogged, user } = useSchoolStore()
   const methods = useForm<{ email: string; password: string }>()
   const [error, setError] = useState("")
   const navigate = useNavigate()
@@ -28,11 +28,27 @@ export function LoginPage() {
           navigate("/school/my-teacher")
           break
         default:
-          navigate("/school/my-user")
+          navigate("/school/my-student")
           break
       }
     }
   })
+
+  useEffect(() => {
+    if (user) {
+      switch (user.role) {
+        case "admin":
+          navigate("/school/admin")
+          break
+        case "teacher":
+          navigate("/school/my-teacher")
+          break
+        default:
+          navigate("/school/my-student")
+          break
+      }
+    }
+  }, [isLogged])
 
   return (
     <div className="max-w-md m-auto mt-8">
@@ -69,6 +85,35 @@ export function LoginPage() {
         <Link to="/school/signup" className="text-sm hover:text-blue-500">
           or Signup
         </Link>
+      </div>
+      <div className="flex justify-center space-x-2 mt-8">
+        <button
+          className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          onClick={() => {
+            methods.setValue("email", "admin@admin.com")
+            methods.setValue("password", "admin")
+          }}
+        >
+          Login as Admin
+        </button>
+        <button
+          className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          onClick={() => {
+            methods.setValue("email", "teacher@teacher.com")
+            methods.setValue("password", "teacher")
+          }}
+        >
+          Login as Teacher
+        </button>
+        <button
+          className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          onClick={() => {
+            methods.setValue("email", "student@student.com")
+            methods.setValue("password", "student")
+          }}
+        >
+          Login as Student
+        </button>
       </div>
     </div>
   )
