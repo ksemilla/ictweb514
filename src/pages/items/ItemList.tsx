@@ -56,9 +56,11 @@ export function ItemList() {
           <div
             key={item.id}
             className="group cursor-pointer shadow rounded-lg overflow-hidden ring-1 ring-transparent hover:ring-2 hover:ring-blue-500"
-            onClick={() => navigate(`${item.id}/edit` ?? "")}
           >
-            <div className="w-full h-72">
+            <div
+              className="w-full h-72"
+              onClick={() => navigate(`${item.id}/edit` ?? "")}
+            >
               <img
                 src={item.imageUrl}
                 className="h-full w-full object-cover object-center"
@@ -83,14 +85,12 @@ export function ItemList() {
                     className="block w-full rounded-none rounded-l-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     onChange={(e) => setQuantity(parseInt(e.target.value))}
                     min={1}
-                    onClick={(e) => e.stopPropagation()}
                   />
                 </div>
                 <button
                   type="button"
                   className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-indigo-600 hover:text-white"
-                  onClick={(e) => {
-                    e.stopPropagation()
+                  onClick={() => {
                     addOrderItem({ ...item, quantity })
                   }}
                 >
