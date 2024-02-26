@@ -14,6 +14,7 @@ export function ItemCreate() {
 
   return (
     <div className="max-w-3xl m-auto mt-8">
+      <h1 className="text-center font-semibold text-3xl">Create new Item</h1>
       <ItemForm onSubmit={onSubmit} />
     </div>
   )

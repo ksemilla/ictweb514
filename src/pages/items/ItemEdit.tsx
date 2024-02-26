@@ -22,6 +22,9 @@ export function ItemEdit() {
   return !item ? (
     <div>Loading...</div>
   ) : (
-    <ItemForm onSubmit={onSubmit} defaultValues={item} />
+    <div>
+      <h1 className="text-center mt-8 font-semibold text-3xl">Update item</h1>
+      <ItemForm onSubmit={onSubmit} defaultValues={item} />
+    </div>
   )
 }

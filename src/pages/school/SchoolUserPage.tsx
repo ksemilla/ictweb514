@@ -26,18 +26,23 @@ export function SchoolUserPage() {
   ) : (
     <div className="max-w-xl m-auto mt-8">
       {user.id !== currentUser?.id && (
-        <div className="flex justify-between items-center border-b mb-4 pb-4">
-          <div>{user.email}</div>
-          <button
-            className="block rounded-md bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            onClick={() => {
-              navigate("/school/admin")
-              deleteUser(user)
-            }}
-          >
-            Delete
-          </button>
-        </div>
+        <>
+          <h1 className="text-center mt-8 font-semibold text-3xl">
+            Updating User
+          </h1>
+          <div className="flex justify-between items-center border-b mb-4 pb-4">
+            <div>{user.email}</div>
+            <button
+              className="block rounded-md bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              onClick={() => {
+                navigate("/school/admin")
+                deleteUser(user)
+              }}
+            >
+              Delete
+            </button>
+          </div>
+        </>
       )}
       <SchoolUserForm onSubmit={onSubmit} defaultValues={user} />
     </div>

@@ -22,6 +22,9 @@ export function UserEdit() {
   return !user ? (
     <div>Loading...</div>
   ) : (
-    <UserForm onSubmit={onSubmit} defaultValues={user} />
+    <div>
+      <h1 className="text-center mt-8 font-semibold text-3xl">Update User</h1>
+      <UserForm onSubmit={onSubmit} defaultValues={user} />
+    </div>
   )
 }

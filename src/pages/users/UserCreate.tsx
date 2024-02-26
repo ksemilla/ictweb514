@@ -13,5 +13,12 @@ export function UserCreate() {
     navigate(`/users/${newUser.id}`)
   }
 
-  return <UserForm onSubmit={onSubmit} />
+  return (
+    <div>
+      <h1 className="text-center mt-8 font-semibold text-3xl">
+        Create new User
+      </h1>
+      <UserForm onSubmit={onSubmit} />
+    </div>
+  )
 }
