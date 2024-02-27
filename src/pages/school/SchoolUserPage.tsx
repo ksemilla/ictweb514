@@ -9,6 +9,7 @@ export function SchoolUserPage() {
   const [user, setUser] = useState<SchoolUser>()
   const onSubmit = (user: SchoolUser) => {
     updateUser(user)
+    navigate(`/school/admin`)
   }
   const navigate = useNavigate()
 
