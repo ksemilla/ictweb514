@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { SchoolUser, useSchoolStore } from "../../stores/school"
 import { SchoolUserForm } from "./SchoolUserForm"
 import { v4 as uuidv4 } from "uuid"
 
 export function StudentCreate() {
   const { createUser, isLogged } = useSchoolStore()
+  const navigate = useNavigate()
   const onSubmit = (user: SchoolUser) => {
-    createUser({ ...user, id: uuidv4() })
+    const id = uuidv4()
+    createUser({ ...user, id })
+    navigate(`/school/user/${id}`)
   }
   return (
     <div className="max-w-md m-auto mt-8">
